@@ -12,4 +12,4 @@ fi
 
 docker-compose -f ./compose-nginx.yaml up -d
 docker ps -a
-docker logs -f nginx-alpine
+docker logs -f nginx
