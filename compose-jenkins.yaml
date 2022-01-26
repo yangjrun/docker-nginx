@@ -14,6 +14,7 @@ services:
       - /home/package/jdk-11.0.14:/home/package/jdk-11.0.14
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
+      - /usr/bin/docker-compose:/usr/bin/docker-compose
       - /usr/lib64/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
     ports:
       - "15000:8080"
