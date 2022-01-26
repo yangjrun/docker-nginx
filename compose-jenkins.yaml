@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    environment:
+      - TZ=Asia/Shanghai
+      - JAVA_HOME=/home/package/jdk-11.0.14
+      - M2_HOME=/home/package/apache-maven-3.8.4
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/package/jdk-11.0.14/bin:/home/package/apache-maven-3.8.4/bin
+    volumes:
+      - /home/package/jenkins:/var/jenkins_home
+      - /home/package/apache-maven-3.8.4:/home/package/apache-maven-3.8.4
+      - /home/package/jdk-11.0.14:/home/package/jdk-11.0.14
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - /usr/lib64/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
+    ports:
+      - "15000:8080"
+    expose:
+      - "8088"
+      - "50000"
+    privileged: true
+    user: root
+    restart: always
+    networks:
+      - nginx_net
+
+networks:
+  nginx_net:
+    external: true
