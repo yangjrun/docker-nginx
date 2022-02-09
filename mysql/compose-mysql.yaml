@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  mysql:
+    image: mysql:laster
+    container_name: mysql
+    privileged: true #一定要设置为true，不然数据卷可能挂载不了，启动不起
+    ports: 
+     - 45000:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1vo#X^E$g4)uYMQD # 自己配置数据库密码
+      TZ: Asia/Shanghai
+      MYSQL_USER: root
+      MYSQL_PASS: 1vo#X^E$g4)uYMQD
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+      --max_allowed_packet=128M
+      --sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO"   
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./conf/my.cnf:/etc/my.cnf
+    restart: always
