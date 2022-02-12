@@ -16,6 +16,9 @@ services:
       - ./conf.d:/etc/nginx/conf.d
       - ./log:/var/log/nginx
       - ./dist:/opt/dist:ro
+    external_links:
+      - youtube-handling-tools
+      - hodgepodge-api-admin
     networks:
       - nginx_net
 
