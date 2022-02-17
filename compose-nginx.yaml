@@ -16,6 +16,7 @@ services:
       - ./conf.d:/etc/nginx/conf.d
       - ./log:/var/log/nginx
       - ./dist:/opt/dist:ro
+      - /home/work/static:/opt/static:ro
     external_links:
       - youtube-handling-tools
       - hodgepodge-api-admin
