@@ -16,6 +16,7 @@ services:
       - ./conf.d:/etc/nginx/conf.d
       - ./log:/var/log/nginx
       - ./dist:/opt/dist:ro
+      - ./cert:/etc/nginx/cert
       - /home/work/static:/opt/static:ro
     external_links:
       - youtube-handling-tools
